@@ -1,13 +1,13 @@
 import Movie from "./Movie";
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom";
+import {Link, /*useParams*/ } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Movies(){
 
     const [title, setTitle]=useState([])
-    const params =useParams()
+//    const {idFilme} =useParams()
 
 
     useEffect(()=>{
@@ -22,9 +22,15 @@ requisicao.then(resposta => {
 
     return(
         <>
-        <div>Selecione o filme</div>
+        
+        
         <ContainerMain> 
-        {title.map((item => <Movie key={item.id} title={item.title} posterURL={item.posterURL} id={item.id}/>))}
+        <h1>Selecione o filme</h1>
+        {title.map((item =>
+            <Link to={`/sessoes/${item.id}`}>
+            <Movie key={item.id} title={item.title} posterURL={item.posterURL} id={item.id}/>
+        </Link>
+            ))}
         </ContainerMain>
         </>
     )
@@ -34,4 +40,15 @@ requisicao.then(resposta => {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    h1{   
+        width:100%;
+        font-family: 'Roboto';
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28px;
+        letter-spacing: 0.04em;
+        text-align: center;
+        padding-top:41px;
+        padding-bottom:41px;
+    }
 `

@@ -1,19 +1,22 @@
 import styled from "styled-components"
+//import {Link, useParams } from "react-router-dom";
 
 export default function Movie(props){
-
-const {posterURL}=props
+//const {idFilme} =useParams()
+const {posterURL, title}=props
     return(
 
         <Container>
-        <img src={posterURL} alt="oi"/>
+        
+        <img src={posterURL} alt={title}/>
+        
         </Container>   
         
     )
     }
 
     const Container = styled.li`
-    width:145px;
+    width:100%;
     height:209px;
     display: flex;
     flex-wrap: wrap;

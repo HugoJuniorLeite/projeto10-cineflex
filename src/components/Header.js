@@ -10,7 +10,7 @@ export default function Header(){
     }
 
     const HeaderCss =styled.header`
-    width:375px;
+    width:100%;
     height:67px;
     background-color:#C3CFD9;
     font-family: Roboto;

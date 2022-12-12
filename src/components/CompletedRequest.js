@@ -1,10 +1,12 @@
-export default function CompletedRequest(){
+export default function CompletedRequest(props){
 
-
+const {name, cpf, ids}=props
     return(
     
         <div>
-            CompletedRequest
+            {name}
+            {cpf}
+            {ids}
         </div>
     )
     }
