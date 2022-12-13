@@ -1,5 +1,4 @@
 import CompletedRequest from "./components/CompletedRequest";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Seats from "./components/Seats";
 import Sessions from "./components/Sessions";
@@ -13,6 +12,8 @@ function App() {
   const [name, setName] = useState("")
   const [cpf, setCpf] = useState("")
   const [ids, setIds] = useState([])
+  const [footer, setFooter]=useState({})
+  const [sala, setSala]=useState([])
 
   return (
 
@@ -25,15 +26,15 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Movies />}/>
-      <Route path="/sessoes/:idFilme" element={<Sessions />}/>
+      <Route path="/sessoes/:idFilme" element={<Sessions footer={footer}  setFooter={setFooter} sala={sala} setSala={setSala}/>}/>
       <Route path="/assentos/:idSessao" element={<Seats cpf={cpf} setCpf={setCpf} name={name} setName={setName} ids={ids} setIds={setIds}/>}/>
-      <Route path="/sucesso" element={<CompletedRequest cpf={cpf} name={name} ids={ids} />}/>
+      <Route path="/sucesso" element={<CompletedRequest sala={sala} footer={footer} cpf={cpf} name={name} ids={ids} />}/>
       <Route />
 
 
     </Routes>
       
-
+    
 
     </BrowserRouter>
   );

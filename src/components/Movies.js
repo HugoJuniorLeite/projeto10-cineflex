@@ -1,15 +1,13 @@
 import Movie from "./Movie";
 import { useEffect, useState } from "react"
 import axios from "axios"
-import {Link, /*useParams*/ } from "react-router-dom";
+import {Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Movies(){
 
     const [title, setTitle]=useState([])
-//    const {idFilme} =useParams()
-
-
+    
     useEffect(()=>{
 const requisicao = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
 
@@ -38,9 +36,11 @@ requisicao.then(resposta => {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top:67px;
     h1{   
         width:100%;
         font-family: 'Roboto';
+        color:#293845;
         font-size: 24px;
         font-weight: 400;
         line-height: 28px;

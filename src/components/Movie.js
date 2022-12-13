@@ -1,17 +1,12 @@
 import styled from "styled-components"
-//import {Link, useParams } from "react-router-dom";
 
 export default function Movie(props){
-//const {idFilme} =useParams()
 const {posterURL, title}=props
     return(
 
-        <Container>
-        
+        <Container>        
         <img src={posterURL} alt={title}/>
-        
         </Container>   
-        
     )
     }
 
@@ -20,7 +15,8 @@ const {posterURL, title}=props
     height:209px;
     display: flex;
     flex-wrap: wrap;
-    background-color:red;
+    background-color:#FFFFFF;
+    box-shadow: 0px 2px 4px 2px #0000001A;
     border-radius:3px;
     margin-bottom:19px;
     img{
@@ -28,5 +24,4 @@ const {posterURL, title}=props
         width:129px;
         height:193px;
     }
-    
     `
