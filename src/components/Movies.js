@@ -22,8 +22,6 @@ requisicao.then(resposta => {
 
     return(
         <>
-        
-        
         <ContainerMain> 
         <h1>Selecione o filme</h1>
         {title.map((item =>

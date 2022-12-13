@@ -12,7 +12,7 @@ function App() {
 
   const [name, setName] = useState("")
   const [cpf, setCpf] = useState("")
-  const [ids, setIds] = useState([2026])
+  const [ids, setIds] = useState([])
 
   return (
 
@@ -30,8 +30,10 @@ function App() {
       <Route path="/sucesso" element={<CompletedRequest cpf={cpf} name={name} ids={ids} />}/>
       <Route />
 
+
     </Routes>
       
+
 
     </BrowserRouter>
   );

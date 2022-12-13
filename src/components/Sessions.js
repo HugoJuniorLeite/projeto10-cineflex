@@ -34,7 +34,7 @@ requisicao.then(resposta => {
         />))}
         </ul>
         
-        <Footer title={footer.title} posterURL={footer.posterURL}/>
+        <Footer title={footer.title} posterURL={footer.posterURL}/>    
     </>
     )
     }

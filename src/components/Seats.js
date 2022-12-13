@@ -5,19 +5,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Seats(props) {
-
+    
     const [seats, setSeats] = useState([]);
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    
     const { idSessao } = useParams()
     const {name,setName, cpf, setCpf, ids, setIds}=props
+    
     const navigate = useNavigate()
-
-    // const [clickSeat, setClickSeat]=useState(false)
-    //  const [teste, setTeste] = useState({})
-    //  const [isSelected, setIsSelected] = useState(false)
-    //  let newArry=[]
-    //  let color=""
-
-    //let newSeat;
+    
     useEffect(() => {
         const requisicao = axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
 
@@ -25,7 +21,7 @@ export default function Seats(props) {
             setSeats(resposta.data.seats)
         })
     }, [idSessao])
-
+    
     function handleSubmit(e) {
         e.preventDefault();
         const buy = { ids, name, cpf }
@@ -37,48 +33,37 @@ export default function Seats(props) {
             console.log(resposta.data, "resposta")
         })
     }
-
-    //  function selectSeat(elemento){
-    //    console.log(elemento, "name");
-    //  newArry.push({elemento, isSelected:true})
-    //newArry.push(elemento)
-    //console.log(newArry,"new arry")
-    //if(newArry.includes(elemento)){
-    //color="blue"
-    //}
-    //}
-
-
-    const [selectedSeats, setSelectedSeats] = useState([]);
-
   //Faz o click em cada componente Seat
   function handleSeat(seat) {
     //Se o assento estiver indisponível não faz nada
     if (seat.isAvailable === false) {
+        alert("Esse assento não está disponível")
       return;
     }
     //Toggle - "Liga e desliga" a seleção
     seat.selected = !seat.selected;
-
     //Se o estado atual é não selecionado precisamos remover o assento
     if (!seat.selected) {
       const filteredSeats = selectedSeats.filter((s) => !(s.name === seat.name));
       setSelectedSeats([...filteredSeats]);
+      //const filteredIds = ids.filter((s) => !(s.id === seat.id));
+      //setIds([...filteredId])
       return;
     }
     //Adicionamos o assento a lista de assentos selecionados
     setSelectedSeats([...selectedSeats, seat]);
+    //const id =selectedSeats.map((e => e.id));
+    
+    //setIds([...id])
     return;
 }
-
-  console.log(selectedSeats)
+console.log(selectedSeats,"teste")
 
     return (
         <>
             
             {seats.map((seat, id) => (<Seat key={id} seat={seat} handleSeat={handleSeat} />))}
             
-
             <form onSubmit={handleSubmit}>
                 <label> Escreva seu nome:
                     <input
